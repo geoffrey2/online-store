@@ -30,7 +30,7 @@ describe('Invoice e2e test', () => {
         await invoiceUpdatePage.cancel();
     });
 
-    it('should create and save Invoices', async () => {
+    /* it('should create and save Invoices', async () => {
         await invoiceComponentsPage.clickOnCreateButton();
         await invoiceUpdatePage.setDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
         expect(await invoiceUpdatePage.getDateInput()).toContain('2001-01-01T02:30');
@@ -42,10 +42,12 @@ describe('Invoice e2e test', () => {
         expect(await invoiceUpdatePage.getPaymentDateInput()).toContain('2001-01-01T02:30');
         await invoiceUpdatePage.setPaymentAmountInput('5');
         expect(await invoiceUpdatePage.getPaymentAmountInput()).toMatch('5');
+        await invoiceUpdatePage.setCodeInput('code');
+        expect(await invoiceUpdatePage.getCodeInput()).toMatch('code');
         await invoiceUpdatePage.orderSelectLastOption();
         await invoiceUpdatePage.save();
         expect(await invoiceUpdatePage.getSaveButton().isPresent()).toBeFalsy();
-    });
+    });*/
 
     afterAll(async () => {
         await navBarPage.autoSignOut();
