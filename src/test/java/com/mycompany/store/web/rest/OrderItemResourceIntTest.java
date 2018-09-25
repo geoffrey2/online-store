@@ -43,8 +43,7 @@ import com.mycompany.store.domain.enumeration.OrderItemStatus;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
-@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"})
-
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"}, password="admin")
 public class OrderItemResourceIntTest {
 
     private static final Integer DEFAULT_QUANTITY = 0;

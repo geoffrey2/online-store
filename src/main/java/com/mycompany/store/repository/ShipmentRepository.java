@@ -16,7 +16,7 @@ import java.util.Optional;
 @Repository
 public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
 
-    Page<Shipment> findAllByOrderCustomerUserLogin(String s, Pageable pageable);
+    Page<Shipment> findAllByInvoiceOrderCustomerUserLogin(String s, Pageable pageable);
 
-    Optional<Shipment> findOneByIdAndOrderCustomerUserLogin(Long id, String s);
+    Optional<Shipment> findOneByIdAndInvoiceOrderCustomerUserLogin(Long id, String s);
 }

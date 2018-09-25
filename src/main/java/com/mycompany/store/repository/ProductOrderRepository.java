@@ -18,5 +18,5 @@ public interface ProductOrderRepository extends JpaRepository<ProductOrder, Long
 
     Page<ProductOrder> findAllByCustomerUserLogin(String login, Pageable pageable);
 
-    Optional<ProductOrder> findOneByIdCustomerUserLogin(Long id, String s);
+    Optional<ProductOrder> findOneByIdAndCustomerUserLogin(Long id, String s);
 }

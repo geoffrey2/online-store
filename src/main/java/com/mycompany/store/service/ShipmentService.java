@@ -51,7 +51,7 @@ public class ShipmentService {
         if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
             return shipmentRepository.findAll(pageable);
         } else {
-            return shipmentRepository.findAllByOrderCustomerUserLogin(
+            return shipmentRepository.findAllByInvoiceOrderCustomerUserLogin(
                 SecurityUtils.getCurrentUserLogin().get(), pageable);
         }
     }
@@ -68,7 +68,7 @@ public class ShipmentService {
         if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
             return shipmentRepository.findById(id);
         } else {
-            return shipmentRepository.findOneByIdAndOrderCustomerUserLogin(
+            return shipmentRepository.findOneByIdAndInvoiceOrderCustomerUserLogin(
                 id, SecurityUtils.getCurrentUserLogin().get());
         }
 

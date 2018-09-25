@@ -43,7 +43,7 @@ import com.mycompany.store.domain.enumeration.OrderStatus;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
-@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"})
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"}, password="admin")
 public class ProductOrderResourceIntTest {
 
     private static final Instant DEFAULT_PLACED_DATE = Instant.ofEpochMilli(0L);

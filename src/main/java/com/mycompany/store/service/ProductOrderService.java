@@ -69,7 +69,7 @@ public class ProductOrderService {
         if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
             return productOrderRepository.findById(id);
         } else {
-            return productOrderRepository.findOneByIdCustomerUserLogin(
+            return productOrderRepository.findOneByIdAndCustomerUserLogin(
                 id, SecurityUtils.getCurrentUserLogin().get());
         }
     }

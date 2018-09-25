@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -40,6 +41,8 @@ import com.mycompany.store.domain.enumeration.Gender;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"}, password="admin")
+
 public class CustomerResourceIntTest {
 
     private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
@@ -72,7 +75,7 @@ public class CustomerResourceIntTest {
     @Autowired
     private CustomerRepository customerRepository;
 
-    
+
 
     @Autowired
     private CustomerService customerService;
@@ -344,7 +347,7 @@ public class CustomerResourceIntTest {
             .andExpect(jsonPath("$.[*].city").value(hasItem(DEFAULT_CITY.toString())))
             .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())));
     }
-    
+
 
     @Test
     @Transactional
@@ -425,7 +428,7 @@ public class CustomerResourceIntTest {
 
         // Create the Customer
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException 
+        // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restCustomerMockMvc.perform(put("/api/customers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(customer)))

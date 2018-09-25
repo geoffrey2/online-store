@@ -42,7 +42,7 @@ import com.mycompany.store.domain.enumeration.Size;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
-@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"})
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"}, password="admin")
 
 public class ProductResourceIntTest {
 
