@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -48,6 +49,7 @@ public class OrderItemResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/order-items")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @Timed
     public ResponseEntity<OrderItem> createOrderItem(@Valid @RequestBody OrderItem orderItem) throws URISyntaxException {
         log.debug("REST request to save OrderItem : {}", orderItem);
@@ -70,6 +72,7 @@ public class OrderItemResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/order-items")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @Timed
     public ResponseEntity<OrderItem> updateOrderItem(@Valid @RequestBody OrderItem orderItem) throws URISyntaxException {
         log.debug("REST request to update OrderItem : {}", orderItem);
@@ -118,6 +121,7 @@ public class OrderItemResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/order-items/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @Timed
     public ResponseEntity<Void> deleteOrderItem(@PathVariable Long id) {
         log.debug("REST request to delete OrderItem : {}", id);
