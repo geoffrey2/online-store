@@ -51,7 +51,7 @@ public class OrderItemService {
         if(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
             return orderItemRepository.findAll(pageable);
         }else{
-            return orderItemRepository.findAllByCustomerUserLogin(
+            return orderItemRepository.findAllByOrderCustomerUserLogin(
                 SecurityUtils.getCurrentUserLogin().get(), pageable);
         }
 
@@ -70,7 +70,7 @@ public class OrderItemService {
         if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
             return orderItemRepository.findById(id);
         } else {
-            return orderItemRepository.findOneByIdCustomerUserLogin(
+            return orderItemRepository.findOneByIdAndOrderCustomerUserLogin(
                 id, SecurityUtils.getCurrentUserLogin().get());
         }
     }

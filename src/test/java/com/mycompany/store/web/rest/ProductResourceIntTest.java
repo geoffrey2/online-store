@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -41,6 +42,8 @@ import com.mycompany.store.domain.enumeration.Size;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"})
+
 public class ProductResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
@@ -63,7 +66,7 @@ public class ProductResourceIntTest {
     @Autowired
     private ProductRepository productRepository;
 
-    
+
 
     @Autowired
     private ProductService productService;
@@ -231,7 +234,7 @@ public class ProductResourceIntTest {
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
     }
-    
+
 
     @Test
     @Transactional
@@ -303,7 +306,7 @@ public class ProductResourceIntTest {
 
         // Create the Product
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException 
+        // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restProductMockMvc.perform(put("/api/products")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(product)))

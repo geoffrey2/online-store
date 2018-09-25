@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -42,6 +43,8 @@ import com.mycompany.store.domain.enumeration.OrderItemStatus;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities = {"ROLE_ADMIN"})
+
 public class OrderItemResourceIntTest {
 
     private static final Integer DEFAULT_QUANTITY = 0;
@@ -56,7 +59,7 @@ public class OrderItemResourceIntTest {
     @Autowired
     private OrderItemRepository orderItemRepository;
 
-    
+
 
     @Autowired
     private OrderItemService orderItemService;
@@ -225,7 +228,7 @@ public class OrderItemResourceIntTest {
             .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.intValue())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
-    
+
 
     @Test
     @Transactional
@@ -288,7 +291,7 @@ public class OrderItemResourceIntTest {
 
         // Create the OrderItem
 
-        // If the entity doesn't have an ID, it will throw BadRequestAlertException 
+        // If the entity doesn't have an ID, it will throw BadRequestAlertException
         restOrderItemMockMvc.perform(put("/api/order-items")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(orderItem)))
