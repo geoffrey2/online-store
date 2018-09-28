@@ -1,7 +1,7 @@
-import { browser, ExpectedConditions as ec } from 'protractor';
-import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
+import {browser,  element, by, ExpectedConditions as ec} from 'protractor';
+import {NavBarPage, SignInPage} from '../../page-objects/jhi-page-objects';
 
-import { CustomerComponentsPage, CustomerUpdatePage } from './customer.page-object';
+import {CustomerComponentsPage, CustomerUpdatePage} from './customer.page-object';
 
 describe('Customer e2e test', () => {
     let navBarPage: NavBarPage;
@@ -30,15 +30,15 @@ describe('Customer e2e test', () => {
         await customerUpdatePage.cancel();
     });
 
-    /* it('should create and save Customers', async () => {
+    it('should create and save Customers', async () => {
         await customerComponentsPage.clickOnCreateButton();
         await customerUpdatePage.setFirstNameInput('firstName');
         expect(await customerUpdatePage.getFirstNameInput()).toMatch('firstName');
         await customerUpdatePage.setLastNameInput('lastName');
         expect(await customerUpdatePage.getLastNameInput()).toMatch('lastName');
         await customerUpdatePage.genderSelectLastOption();
-        await customerUpdatePage.setEmailInput('email');
-        expect(await customerUpdatePage.getEmailInput()).toMatch('email');
+        await customerUpdatePage.setEmailInput('email@email.com');
+        expect(await customerUpdatePage.getEmailInput()).toMatch('email@email.com');
         await customerUpdatePage.setPhoneInput('phone');
         expect(await customerUpdatePage.getPhoneInput()).toMatch('phone');
         await customerUpdatePage.setAddressLine1Input('addressLine1');
@@ -51,8 +51,16 @@ describe('Customer e2e test', () => {
         expect(await customerUpdatePage.getCountryInput()).toMatch('country');
         await customerUpdatePage.userSelectLastOption();
         await customerUpdatePage.save();
-        expect(await customerUpdatePage.getSaveButton().isPresent()).toBeFalsy();
-    });*/
+        expect(customerUpdatePage.getSaveButton().isPresent()).toBeFalsy();
+        expect(customerUpdatePage.getTable().isPresent()).toBeTruthy();
+    });
+
+    it('should delete Customers', () => {
+        customerUpdatePage.deleteFirstItem();
+        const deleteBtn = element.all(by.css('.modal-footer.btn.btn-danger'));
+        deleteBtn.click();
+        expect(customerUpdatePage.getTable().isPresent()).toBeFalsy();
+    });
 
     afterAll(async () => {
         await navBarPage.autoSignOut();

@@ -27,6 +27,15 @@ export class CustomerUpdatePage {
     cityInput = element(by.id('field_city'));
     countryInput = element(by.id('field_country'));
     userSelect = element(by.id('field_user'));
+    table = element.all(by.css('.table-responsive tbody tr'));
+
+    getTable(){
+        return this.table;
+    }
+
+    deleteFirstItem() {
+        this.table.first().element(by.css('button.btn-danger')).click();
+    }
 
     async getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
