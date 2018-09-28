@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="Customer e2e test" timestamp="2018-09-28T16:41:51" hostname="localhost" time="10.849" errors="0" tests="4" skipped="0" disabled="0" failures="0">
+  <testcase classname="Customer e2e test" name="should load Customers" time="0.147" />
+  <testcase classname="Customer e2e test" name="should load create Customer page" time="0.423" />
+  <testcase classname="Customer e2e test" name="should create and save Customers" time="1.099" />
+  <testcase classname="Customer e2e test" name="should delete Customers" time="0.002" />
+ </testsuite>
+</testsuites>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="administration" timestamp="2018-09-28T16:41:44" hostname="localhost" time="7.266" errors="0" tests="6" skipped="0" disabled="0" failures="0">
+  <testcase classname="administration" name="should load user management" time="0.343" />
+  <testcase classname="administration" name="should load metrics" time="0.479" />
+  <testcase classname="administration" name="should load health" time="0.402" />
+  <testcase classname="administration" name="should load configuration" time="0.627" />
+  <testcase classname="administration" name="should load audits" time="0.507" />
+  <testcase classname="administration" name="should load logs" time="1.638" />
+ </testsuite>
+</testsuites>
