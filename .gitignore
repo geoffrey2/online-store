@@ -12,7 +12,7 @@
 node_tmp/
 node_modules/
 npm-debug.log.*
-/.awcache/*
+/.awcache/*+
 /.cache-loader/*
 
 ######################
@@ -83,8 +83,8 @@ out/
 ######################
 # Package Files
 ######################
-*.jar
-*.war
+#*.jar
+#*.war
 *.ear
 *.db
 
