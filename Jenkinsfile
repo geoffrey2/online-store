@@ -40,7 +40,7 @@ node {
 
     stage('packaging') {
          "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
-        archiveArtifacts artifacts: '**/build/libs/*.war', fingerprint: true
+        archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
     }
 
    /* stage('deployment') {
