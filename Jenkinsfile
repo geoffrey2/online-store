@@ -11,16 +11,16 @@ node {
 
     stage('clean') {
         "chmod +x gradlew"
-        "./gradlew clean --no-daemon"
+        "gradlew clean --no-daemon"
     }
 
     stage('npm install') {
-        "./gradlew npmInstall -PnodeInstall --no-daemon"
+        "gradlew npmInstall -PnodeInstall --no-daemon"
     }
 
     stage('backend tests') {
         try {
-             "./gradlew test -PnodeInstall --no-daemon"
+             "gradlew test -PnodeInstall --no-daemon"
         } catch(err) {
             throw err
         } finally {
