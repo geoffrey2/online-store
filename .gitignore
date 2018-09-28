@@ -78,13 +78,13 @@ out/
 # Gradle
 ######################
 .gradle/
-#/build/
+/build/
 
 ######################
 # Package Files
 ######################
-#*.jar
-#*.war
+*.jar
+*.war
 *.ear
 *.db
 
