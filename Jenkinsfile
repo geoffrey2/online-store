@@ -30,7 +30,7 @@ node {
 
     stage('frontend tests') {
         try {
-             "./gradlew npm_test -PnodeInstall --no-daemon"
+             "gradlew npm_test -PnodeInstall --no-daemon"
         } catch(err) {
             throw err
         } finally {
@@ -39,7 +39,7 @@ node {
     }
 
     stage('packaging') {
-         "./gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
+         "gradlew bootWar -x test -Pprod -PnodeInstall --no-daemon"
         archiveArtifacts artifacts: '/build/libs/*.*.jar', fingerprint: true
     }
 
