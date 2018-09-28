@@ -24,13 +24,13 @@ node {
         } catch(err) {
             throw err
         } finally {
-            junit '/build/**/TEST-*.xml'
+            junit '/build/*.*/*.*/*.xml'
         }
     }
 
     stage('frontend tests') {
         try {
-             "gradlew npm_test -PnodeInstall --no-daemon"
+             "gradlew npm_test"
         } catch(err) {
             throw err
         } finally {
