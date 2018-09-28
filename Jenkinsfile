@@ -20,7 +20,7 @@ node {
 
     stage('backend tests') {
         try {
-             "gradlew test -PnodeInstall --no-daemon"
+             bat "gradlew test -PnodeInstall --no-daemon"
         } catch(err) {
             throw err
         } finally {
